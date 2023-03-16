@@ -15,4 +15,4 @@ app.use('/user', userRoutes);
 app.use('/videos', videosRoutes);
 
 //criar o servidor
-app.listen(4000);
+app.listen(4000, "[ server start ]");
