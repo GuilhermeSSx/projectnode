@@ -13,6 +13,5 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/user', user_routes_1.userRoutes);
 app.use('/videos', videos_routes_1.videosRoutes);
-alert(process.env.PORT);
 //criar o servidor
 app.listen(process.env.PORT || 3000);
