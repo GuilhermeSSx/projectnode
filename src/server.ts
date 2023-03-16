@@ -15,4 +15,6 @@ app.use('/user', userRoutes);
 app.use('/videos', videosRoutes);
 
 //criar o servidor
-app.listen(4000, "[ server start ]");
+app.listen(4000, function(){
+    "[ server start : port 4000 ]" 
+});
