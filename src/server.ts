@@ -12,5 +12,8 @@ app.use(express.json());
 app.use('/user', userRoutes);
 app.use('/videos', videosRoutes);
 
+alert(process.env.PORT_DATABASE);
+
+
 //criar o servidor
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT_DATABASE || 3000);
