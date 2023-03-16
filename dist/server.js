@@ -13,10 +13,5 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/user', user_routes_1.userRoutes);
 app.use('/videos', videos_routes_1.videosRoutes);
-const PORT_DATABASE = process.env.PORT_DATABASE || 1337;
 //criar o servidor
-app.listen(PORT_DATABASE, function () {
-    console.log("listen on localhost:"
-        + PORT_DATABASE +
-        "ctrl+c quit to quit...");
-});
+app.listen(process.env.PORT || 3000);

@@ -12,11 +12,5 @@ app.use(express.json());
 app.use('/user', userRoutes);
 app.use('/videos', videosRoutes);
 
-const PORT_DATABASE = process.env.PORT_DATABASE || 1337;
-
 //criar o servidor
-app.listen(PORT_DATABASE, function(){
-    console.log("listen on localhost:" 
-    + PORT_DATABASE +
-    "ctrl+c quit to quit...")
-});
+app.listen(process.env.PORT || 3000);
