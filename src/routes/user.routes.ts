@@ -1,5 +1,7 @@
 import { Router } from "express";
+import { login } from "../middleware/login";
 import { UserRepository } from "../modules/user/repositories/UserRepository";
+
 
 const userRoutes = Router();
 const userRepository = new UserRepository();
@@ -12,5 +14,10 @@ userRoutes.post('/sign-up', (request, response) => {
 userRoutes.post('/sign-in', (request, response) => {
     userRepository.login(request, response);
 })
+
+userRoutes.post('/get-user', login, (request, response) => {
+    userRepository.getUser(request, response);
+})
+
 
 export { userRoutes };
