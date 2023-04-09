@@ -80,6 +80,9 @@ class UserRepository {
                                 response: null
                             })
                         }
+
+                        console.log(resultado);
+
                         return response.status(201).send({
                             user: {
                                 nome: resultado[0].name,

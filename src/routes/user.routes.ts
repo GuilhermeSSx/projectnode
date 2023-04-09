@@ -14,9 +14,8 @@ userRoutes.post('/sign-in', (request, response) => {
     userRepository.login(request, response);
 })
 
-userRoutes.post('/get-user', login, (request, response) => {
+userRoutes.get('/get-user', login, (request, response) => {
     userRepository.getUser(request, response);
 })
-
 
 export { userRoutes };

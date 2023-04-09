@@ -47,5 +47,29 @@ class UserRepository {
             });
         });
     }
+    getUser(request, response) {
+        const decode = (0, jsonwebtoken_1.verify)(request.headers.authorization, process.env.SECRET);
+        if (decode.email) {
+            mysql_1.pool.getConnection((error, conn) => {
+                conn.query('SELECT * FROM users WHERE email = ?', [decode.email], (error, resultado, fileds) => {
+                    conn.release();
+                    if (error) {
+                        return response.status(400).send({
+                            error: error,
+                            response: null
+                        });
+                    }
+                    console.log(resultado);
+                    return response.status(201).send({
+                        user: {
+                            nome: resultado[0].name,
+                            email: resultado[0].email,
+                            id: resultado[0].user_id,
+                        }
+                    });
+                });
+            });
+        }
+    }
 }
 exports.UserRepository = UserRepository;

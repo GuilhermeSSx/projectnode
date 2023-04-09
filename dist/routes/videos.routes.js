@@ -9,9 +9,9 @@ exports.videosRoutes = videosRoutes;
 const videoRepository = new VideosRepository_1.VideoRepository();
 // rotas
 videosRoutes.post('/create-video', login_1.login, (request, response) => {
-    videoRepository.criar_video(request, response);
+    videoRepository.createVideo(request, response);
 });
-videosRoutes.get('/get-videos', login_1.login, (request, response) => {
+videosRoutes.get('/get-videos/:user_id', login_1.login, (request, response) => {
     videoRepository.getVideos(request, response);
 });
 videosRoutes.get('/search', (request, response) => {

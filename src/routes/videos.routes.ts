@@ -7,10 +7,10 @@ const videoRepository = new VideoRepository();
 
 // rotas
 videosRoutes.post('/create-video', login, (request, response) => {
-    videoRepository.criar_video(request, response);
+    videoRepository.createVideo(request, response);
 })
 
-videosRoutes.get('/get-videos', login, (request, response) => {
+videosRoutes.get('/get-videos/:user_id', login, (request, response) => {
     videoRepository.getVideos(request, response);
 })
 

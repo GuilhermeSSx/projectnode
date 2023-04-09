@@ -9,12 +9,19 @@ const videos_routes_1 = require("./routes/videos.routes");
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
-console.log(process.env.SECRET);
+const cors = require('cors');
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+});
+app.use(cors());
 // middleware
 app.use(express_1.default.json());
 app.use('/user', user_routes_1.userRoutes);
 app.use('/videos', videos_routes_1.videosRoutes);
 //criar o servidor
 app.listen(4000, function () {
-    "[ server start : port 4000 ]";
+    console.log("[ server start : port 4000 ]");
 });

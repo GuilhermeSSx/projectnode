@@ -7,12 +7,12 @@ import { Request, Response} from 'express';
 
 class VideoRepository {
 
-    criar_video(request: Request, response: Response) {
+    createVideo(request: Request, response: Response) {
 
         const { title, description, user_id } = request.body;
         pool.getConnection((err: any, connection: any) => {
             connection.query(
-                'INSERT INTO videos (video_id, user_id, title, description) VALUES (?,?,?,?)',
+                'INSERT INTO videos (video_id, user_id, title, description, views) VALUES (?,?,?,?, 1)',
                 [uuidv4(), user_id, title, description],
                 (error: any, result: any, fileds: any) => {
                     connection.release();
@@ -28,7 +28,7 @@ class VideoRepository {
 
     getVideos(request: Request, response: Response) {
 
-        const { user_id } = request.body;
+        const { user_id } = request.params;
         pool.getConnection((err: any, connection: any) => {
     
             connection.query(
@@ -65,6 +65,9 @@ class VideoRepository {
         })
 
     }
+
+
+
 
 }
 
